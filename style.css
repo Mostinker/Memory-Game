@@ -1,0 +1,99 @@
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: lightblue;
+}
+
+.wrapper {
+  height: 450px;
+  width: 450px;
+  background: #fff;
+  border-radius: 10px;
+  color: lightyellow;
+}
+
+.cards {
+  height: 100%;
+  width: 100%;
+  flex-wrap: wrap;
+  padding-left: 0;
+  margin: 5px;
+  flex-wrap: wrap;
+}
+
+.cards .card {
+  cursor: pointer;
+  height: 100px;
+  width: 100px;
+  position: relative;
+  perspective: 800px;
+  transform-style: preserve-3d;
+  list-style: none;
+  user-select: none;
+}
+
+.cards .shuffle {
+  animation: shake 0.3s ease-in-out;
+}
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-15px);
+  }
+  40% {
+    transform: translateX(15px);
+  }
+  60% {
+    transform: translateX(-10px);
+  }
+  80% {
+    transform: translateX(10px);
+  }
+}
+
+.cards .card .view {
+  background: rgb(243, 127, 127);
+  width: 70%;
+  height: 70%;
+  pointer-events: none;
+  transition: transform 0.25s linear;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
+  position: absolute;
+}
+
+.cards,
+.card,
+.view {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card .front-view span {
+  font-size: 40px;
+  color: lightblue;
+}
+
+.card .back-view {
+  transform: rotateY(-90deg);
+  /* display: none; */
+}
+
+.card .back-view img {
+  max-width: 45px;
+}
+
+.card.flip .back-view {
+  transform: rotateY(0);
+}
+
+.card.flip .front-view {
+  transform: rotateY(180deg);
+}
